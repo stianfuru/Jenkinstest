@@ -414,6 +414,120 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var jsonResponse = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"id\", jsonResponse.id);",
+									"console.log(\"id = \" + jsonResponse.id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"address\": \"Karl Johansgate 4\",\n  \"country\": \"Norway\",\n  \"dob\": \"08/20/1960\",\n  \"emailAddress\": \"Ola.normann@test.com\",\n  \"username\": \"Ola.normann@test.com\",\n  \"firstName\": \"Ola\",\n  \"gender\": \"M\",\n  \"homePhone\": \"43215678\",\n  \"lastName\": \"Normann\",\n  \"locality\": \"bhvdjsakbnfjhadsk\",\n  \"mobilePhone\": \"98761234\",\n  \"password\": \"Hallopådo1\",\n  \"postalCode\": \"5678\",\n  \"region\": \"Oslo\",\n  \"ssn\": \"111-22-3333\",\n  \"title\": \"Mr.\",\n  \"workPhone\": \"67895432\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://16.170.253.160:8080/bank/api/v1/user",
+							"protocol": "http",
+							"host": [
+								"16",
+								"170",
+								"253",
+								"160"
+							],
+							"port": "8080",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Ola Normann\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Ola.normann@test.com\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://16.170.253.160:8080/bank/api/v1/user/{{id}}",
+							"protocol": "http",
+							"host": [
+								"16",
+								"170",
+								"253",
+								"160"
+							],
+							"port": "8080",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"user",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New user, expect fail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
 									"pm.test(\"Status code is 406\", function () {",
 									"    pm.response.to.have.status(406);",
 									"});"
@@ -465,7 +579,71 @@
 					"response": []
 				},
 				{
-					"name": "Get All",
+					"name": "Delete user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://16.170.253.160:8080/bank/api/v1/user/{{id}}",
+							"protocol": "http",
+							"host": [
+								"16",
+								"170",
+								"253",
+								"160"
+							],
+							"port": "8080",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"user",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user, expect fail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"console.log(\"User is deleted\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -480,7 +658,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://16.170.253.160:8080/bank/api/v1/account",
+							"raw": "http://16.170.253.160:8080/bank/api/v1/user/{{id}}",
 							"protocol": "http",
 							"host": [
 								"16",
@@ -493,7 +671,8 @@
 								"bank",
 								"api",
 								"v1",
-								"account"
+								"user",
+								"{{id}}"
 							]
 						}
 					},
@@ -509,6 +688,10 @@
 		},
 		{
 			"key": "Token",
+			"value": ""
+		},
+		{
+			"key": "id",
 			"value": ""
 		}
 	]
