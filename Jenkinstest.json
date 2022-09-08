@@ -47,12 +47,15 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost:8443/bank/api/v1/auth?password=Demo123!&username=jsmith%40demo.io",
-							"protocol": "https",
+							"raw": "http://16.170.253.160:8080/bank/api/v1/auth?password=Demo123!&username=jsmith%40demo.io",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"16",
+								"170",
+								"253",
+								"160"
 							],
-							"port": "8443",
+							"port": "8080",
 							"path": [
 								"bank",
 								"api",
@@ -120,12 +123,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/bank/api/v1/user/account/",
-							"protocol": "https",
+							"raw": "http://16.170.253.160:8080/bank/api/v1/user/account/",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"16",
+								"170",
+								"253",
+								"160"
 							],
-							"port": "8443",
+							"port": "8080",
 							"path": [
 								"bank",
 								"api",
@@ -181,19 +187,80 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/bank/api/v1/account/160/transaction",
-							"protocol": "https",
+							"raw": "http://16.170.253.160:8080/bank/api/v1/account/223/transaction",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"16",
+								"170",
+								"253",
+								"160"
 							],
-							"port": "8443",
+							"port": "8080",
 							"path": [
 								"bank",
 								"api",
 								"v1",
 								"account",
-								"160",
+								"223",
 								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Withdraw 1000$",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": 1000,\n  \"description\": \"Værsegod 1000\",\n  \"transactionTypeCode\": \"WTH\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://16.170.253.160:8080/bank/api/v1/account/223transaction",
+							"protocol": "http",
+							"host": [
+								"16",
+								"170",
+								"253",
+								"160"
+							],
+							"port": "8080",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"account",
+								"223transaction"
 							]
 						}
 					},
@@ -246,18 +313,21 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/bank/api/v1/account/160/transaction",
-							"protocol": "https",
+							"raw": "http://16.170.253.160:8080/bank/api/v1/account/223/transaction",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"16",
+								"170",
+								"253",
+								"160"
 							],
-							"port": "8443",
+							"port": "8080",
 							"path": [
 								"bank",
 								"api",
 								"v1",
 								"account",
-								"160",
+								"223",
 								"transaction"
 							]
 						}
@@ -307,12 +377,15 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost:8443/bank/api/v1/auth?password=Demo123!&username=admin%40demo.io",
-							"protocol": "https",
+							"raw": "http://16.170.253.160:8080/bank/api/v1/auth?password=Demo123!&username=admin%40demo.io",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"16",
+								"170",
+								"253",
+								"160"
 							],
-							"port": "8443",
+							"port": "8080",
 							"path": [
 								"bank",
 								"api",
@@ -335,6 +408,19 @@
 				},
 				{
 					"name": "New user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 406\", function () {",
+									"    pm.response.to.have.status(406);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -358,12 +444,15 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:8443/bank/api/v1/user",
-							"protocol": "https",
+							"raw": "http://16.170.253.160:8080/bank/api/v1/user",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"16",
+								"170",
+								"253",
+								"160"
 							],
-							"port": "8443",
+							"port": "8080",
 							"path": [
 								"bank",
 								"api",
@@ -390,66 +479,20 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:8443/bank/api/v1/users",
-							"protocol": "https",
+							"raw": "http://16.170.253.160:8080/bank/api/v1/users",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"16",
+								"170",
+								"253",
+								"160"
 							],
-							"port": "8443",
+							"port": "8080",
 							"path": [
 								"bank",
 								"api",
 								"v1",
 								"users"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Bonusoppgave 2",
-			"item": [
-				{
-					"name": "HttpBin",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"",
-									"var jsonResponse = pm.response.json();",
-									"console.log(jsonResponse);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\":\"{{name}}\",\n    \"email\":\"{{email}}\",\n    \"age\":\"{{age}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "httpbin.org/post",
-							"host": [
-								"httpbin",
-								"org"
-							],
-							"path": [
-								"post"
 							]
 						}
 					},
