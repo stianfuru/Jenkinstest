@@ -260,7 +260,8 @@
 								"api",
 								"v1",
 								"account",
-								"223transaction"
+								"223",
+								"transaction"
 							]
 						}
 					},
