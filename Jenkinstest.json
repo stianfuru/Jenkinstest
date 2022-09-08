@@ -187,7 +187,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://16.170.253.160:8080/bank/api/v1/account/223/transaction",
+							"raw": "http://16.170.253.160:8080/bank/api/v1/account/79/transaction",
 							"protocol": "http",
 							"host": [
 								"16",
@@ -201,7 +201,7 @@
 								"api",
 								"v1",
 								"account",
-								"223",
+								"79",
 								"transaction"
 							]
 						}
@@ -246,7 +246,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://16.170.253.160:8080/bank/api/v1/account/223/transaction",
+							"raw": "http://16.170.253.160:8080/bank/api/v1/account/79/transaction",
 							"protocol": "http",
 							"host": [
 								"16",
@@ -260,7 +260,7 @@
 								"api",
 								"v1",
 								"account",
-								"223",
+								"79",
 								"transaction"
 							]
 						}
@@ -314,7 +314,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://16.170.253.160:8080/bank/api/v1/account/223/transaction",
+							"raw": "http://16.170.253.160:8080/bank/api/v1/account/79/transaction",
 							"protocol": "http",
 							"host": [
 								"16",
@@ -328,7 +328,7 @@
 								"api",
 								"v1",
 								"account",
-								"223",
+								"79",
 								"transaction"
 							]
 						}
@@ -480,7 +480,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://16.170.253.160:8080/bank/api/v1/users",
+							"raw": "http://16.170.253.160:8080/bank/api/v1/account",
 							"protocol": "http",
 							"host": [
 								"16",
@@ -493,7 +493,7 @@
 								"bank",
 								"api",
 								"v1",
-								"users"
+								"account"
 							]
 						}
 					},
