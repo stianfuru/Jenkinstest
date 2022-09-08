@@ -246,7 +246,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://16.170.253.160:8080/bank/api/v1/account/223transaction",
+							"raw": "http://16.170.253.160:8080/bank/api/v1/account/223/transaction",
 							"protocol": "http",
 							"host": [
 								"16",
